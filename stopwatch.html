@@ -21,7 +21,7 @@
             font-weight: bold;
         }
         .txt{
-            font-size: 40px;
+            font-size: 70px;
             font-weight: bold;
         }
         #btn-container{
@@ -45,17 +45,29 @@
         #reset{
             background-color: #e74c3c;
         }
+        #time > span:nth-child(1),span:nth-child(2){
+            display: none;
+        }
+        #time > span:nth-child(3),span:nth-child(4){
+            display: none;
+        }
+        #time > span:nth-child(even){
+            margin-right: 40px;
+        }
+        #time > span:nth-child(7){
+            font-size: 100px;
+        }
     </style>
 </head>
 <body>
     <div id="container">
         <div id="time">
             <span class="digit" id="hr">00</span>
-            <span class="txt">Hr</span>
+            <span class="txt" id="h">h</span>
             <span class="digit" id="min">00</span>
-            <span class="txt">Min</span>
+            <span class="txt" id="m">m</span>
             <span class="digit" id="sec">00</span>
-            <span class="txt">Sec</span>
+            <span class="txt">s</span>
             <span class="digit" id="count">00</span>
         </div>
         <div id="btn-container">
@@ -92,8 +104,10 @@
             sec = 0;
             count = 0;
 
-            document.getElementById("hr").innerHTML = "00";
-            document.getElementById("min").innerHTML = "00";
+            document.getElementById("h").style.display = "none";
+            document.getElementById("hr").style.display = "none";
+            document.getElementById("m").style.display = "none";
+            document.getElementById("min").style.display = "none";
             document.getElementById("sec").innerHTML = "00";
             document.getElementById("count").innerHTML = "00";
         }
@@ -139,8 +153,19 @@
                     countString = "0" + countString;
                 }
 
-                document.getElementById("hr").innerHTML = hrString;
-                document.getElementById("min").innerHTML = minString;
+                if(hrString!=0){
+                    document.getElementById("h").style.display="inline";
+                    document.getElementById("hr").style.display="inline";
+                    document.getElementById("hr").innerHTML = hrString;
+                }
+
+                if(minString!=0){
+                    document.getElementById("m").style.display="inline";
+                    document.getElementById("min").style.display="inline";
+                    document.getElementById("min").innerHTML = minString;
+                }
+
+                
                 document.getElementById("sec").innerHTML = secString;
                 document.getElementById("count").innerHTML = countString;
 
